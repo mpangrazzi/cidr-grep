@@ -1,6 +1,8 @@
 cidr-grep
 =========
 
+[![Build Status](https://travis-ci.org/mpangrazzi/cidr-grep.svg?branch=master)](https://travis-ci.org/mpangrazzi/cidr-grep)
+
 A `grep`-like tool used to filter IP addresses against one or more [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) network patterns.
 
 I wanted a tool which I can use both as a CLI tool and a Node.js [transorm stream](https://nodejs.org/api/stream.html). So I've built cidr-grep, for easily doing things like that:
