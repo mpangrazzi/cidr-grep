@@ -1,0 +1,85 @@
+#!/usr/bin/env node
+
+var debug = require('debug')('cidrgrep');
+var fs = require('fs');
+var path = require('path');
+var MultiStream = require('multistream');
+
+var Network = require('../lib/network');
+var CidrGrepStream = require('../lib');
+
+
+/**
+ * Convert an argument to an Array (if needed)
+ *
+ * @param  {mixed} arg
+ * @return {object}
+ */
+
+function normalizeArgs(arg) {
+  return Array.isArray(arg) ? arg : [arg];
+}
+
+
+/**
+ * Print usage and exit
+ */
+
+function printUsageAndExit() {
+  return fs.createReadStream(__dirname + '/usage.txt')
+    .pipe(process.stdout)
+    .on('close', function() { process.exit(1) });
+}
+
+
+// Get argv
+
+var argv = require('minimist')(process.argv.slice(2));
+debug('provided argv', argv);
+
+if (!argv.n) {
+  return printUsageAndExit();
+}
+
+if (!argv.f && process.stdin.isTTY) {
+  return printUsageAndExit();
+}
+
+// Normalize args
+
+argv.n = normalizeArgs(argv.n);
+argv.f = normalizeArgs(argv.f);
+debug('normalized argv', argv);
+
+// Get networks
+
+var networks = argv.n.map(function(cidr) {
+  return Network.create(cidr);
+});
+
+
+// Run
+
+if (process.stdin.isTTY) {
+
+  // Get file streams
+
+  var files = argv.f.map(function(source) {
+    return fs.createReadStream(path.join(__dirname, source));
+  });
+
+  // User-provided args
+
+  MultiStream(files)
+    .pipe(CidrGrepStream({ networks: networks, appendEOL: true }))
+    .pipe(process.stdout);
+
+} else {
+
+  // Unix pipe
+
+  process.stdin
+    .pipe(CidrGrepStream({ networks: networks, appendEOL: true }))
+    .pipe(process.stdout);
+
+}

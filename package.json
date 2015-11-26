@@ -1,0 +1,30 @@
+{
+  "name": "cidr-grep",
+  "version": "1.0.0",
+  "description": "A grep-like tool used to filter IP addresses against one or more CIDR network patterns",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mpangrazzi/cidr-grep.git"
+  },
+  "bin": {
+    "cidrgrep": "./bin/cidrgrep"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/tape test/**/*.js | ./node_modules/.bin/tap-spec"
+  },
+  "author": "Michele Pangrazzi <xmikex83@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "ip": "^1.0.1",
+    "minimist": "^1.2.0",
+    "multipipe": "^0.2.1",
+    "multistream": "^2.0.2",
+    "object-assign": "^4.0.1",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
+  }
+}

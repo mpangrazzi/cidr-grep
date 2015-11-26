@@ -1,0 +1,8 @@
+Usage: cidrgrep {OPTIONS}
+
+Standard Options:
+
+    -n <cidr>  Check this network (written in CIDR notation)
+
+    -f <file>  Source files
+
