@@ -5,7 +5,7 @@ cidr-grep
 
 A `grep`-like tool used to filter IP addresses against one or more [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) network patterns.
 
-I wanted a tool which I can use both as a CLI tool and a Node.js [transorm stream](https://nodejs.org/api/stream.html). So I've built cidr-grep, for easily doing things like that:
+I wanted a tool which I can use both as a CLI tool and a Node.js [transform stream](https://nodejs.org/api/stream.html). So I've built cidr-grep, for easily doing things like that:
 
 `$ cat access.log | cidrgrep -n 192.168.1.0/27`
 
