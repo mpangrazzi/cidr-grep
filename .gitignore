@@ -1,7 +1,7 @@
 node_modules/*
 coverage/
 
-*.log
+npm*.log
 
 .DS_Store
 .idea
