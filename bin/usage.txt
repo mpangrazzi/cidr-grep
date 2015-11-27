@@ -2,7 +2,11 @@ Usage: cidrgrep {OPTIONS}
 
 Standard Options:
 
-    -n <cidr>  Check this network (written in CIDR notation)
+    -n <cidr>  Check this network (written in CIDR notation).
+               You can specify multiple networks with multiple "-n" options.
+               Example: cidrgrep -f test.log -n 192.168.10.0/24 -n 10.5.0.0/16
 
-    -f <file>  Source files
+    -f <file>  Source file
+               You can specify multiple source files using multiple "-f" options.
+               Example: cidrgrep -f test.log -f otherfile.log -n 10.5.0.0/16
 
