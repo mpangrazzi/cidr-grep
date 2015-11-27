@@ -65,7 +65,7 @@ if (process.stdin.isTTY) {
   // Get file streams
 
   var files = argv.f.map(function(source) {
-    return fs.createReadStream(path.join(__dirname, source));
+    return fs.createReadStream(source);
   });
 
   // User-provided args
