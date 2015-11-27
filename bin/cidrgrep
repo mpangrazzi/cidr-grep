@@ -2,7 +2,6 @@
 
 var debug = require('debug')('cidrgrep');
 var fs = require('fs');
-var path = require('path');
 var MultiStream = require('multistream');
 
 var Network = require('../lib/network');
