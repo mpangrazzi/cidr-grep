@@ -1,6 +1,6 @@
 {
   "name": "cidr-grep",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "description": "A grep-like tool used to filter IP addresses against one or more CIDR network patterns",
   "repository": {
