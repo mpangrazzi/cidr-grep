@@ -7,11 +7,15 @@ A `grep`-like tool used to filter IP addresses against one or more [CIDR](https:
 
 I wanted a tool which I can use both as a CLI tool and a Node.js [transform stream](https://nodejs.org/api/stream.html). So I've built cidr-grep, for easily doing things like that:
 
-`$ cat access.log | cidrgrep -n 192.168.1.0/27`
+```
+$ cat access.log | cidrgrep -n 192.168.1.0/27
+```
 
 or
 
-`$ tail -f access.log | cidrgrep -n 192.168.1.0/27`
+```
+$ tail -f access.log | cidrgrep -n 192.168.1.0/27
+```
 
 Where `access.log` can be, for example, an [Apache](https://httpd.apache.org), [Nginx](http://nginx.org) or [Squid](http://www.squid-cache.org) server access log.
 
